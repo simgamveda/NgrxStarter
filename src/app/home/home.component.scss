@@ -1,0 +1,17 @@
+.grid{
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    padding: 20px;
+}
+.edit-col button{
+   opacity: 0;
+}
+.table-row{
+    &:hover{
+        .edit-col button{
+           opacity: 1;
+        }
+        
+    }
+}
