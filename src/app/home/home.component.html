@@ -3,54 +3,57 @@
         <h2>User List</h2>
     </div>
     <form [formGroup]="userFormGroup">
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th scope="col">User ID</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Username</th>
-                    <th scope="col">Email</th>
-                </tr>
-            </thead>
-            <tbody>
-                <ng-container *ngIf="(loadingState|async)?.loading">
-                    <ng-container *ngTemplateOutlet="loadingTemplate"></ng-container>
-                </ng-container>
-                <ng-container *ngIf="(loadingState|async)?.completed">
-                    <tr *ngFor="let user of userList" class="table-row">
-           
-                        <ng-container *ngIf="user.id==currentUserEdit?.id">
-                           
-                            <th scope="row">{{user.id}}</th>
-                            <td>
-                                <div class="input-group mb-3" >
-                                    <input type="text" class="form-control" placeholder="name" aria-label="Username"  formControlName="name" aria-describedby="basic-addon1">
-                                </div>
-                            </td>
-                            <td>
-                                <div class="input-group mb-3">
-                                    <input type="text" class="form-control" placeholder="Username" aria-label="Username" formControlName="username" aria-describedby="basic-addon1">
-                                </div>
-                            </td>
-                            <td>
-                                <div class="input-group mb-3">
-                                    <input type="text" class="form-control" placeholder="email" aria-label="Username" formControlName="email" aria-describedby="basic-addon1">
-                                </div>
-                            </td>
-                            <td class="align-middle"><button class="btn btn-primary btn-sm" type="button" (click)="saveUser(user)">Save</button></td>
-                        </ng-container>
-                        <ng-container *ngIf="user.id!=currentUserEdit?.id">
-                            <th scope="row">{{user.id}}</th>
-                            <td>{{user.name}}</td>
-                            <td>{{user.username}}</td>
-                            <td>{{user.email}}</td>
-                            <td class="edit-col align-middle"><button class="btn btn-secondary btn-sm" type="button" (click)="editUser(user)">Edit</button></td>
-                        </ng-container>
-                      
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">User ID</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Username</th>
+                        <th scope="col">Email</th>
                     </tr>
-                </ng-container>
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    <ng-container *ngIf="(loadingState|async)?.loading">
+                        <ng-container *ngTemplateOutlet="loadingTemplate"></ng-container>
+                    </ng-container>
+                    <ng-container *ngIf="(loadingState|async)?.completed">
+                        <tr *ngFor="let user of userList" class="table-row">
+               
+                            <ng-container *ngIf="user.id==currentUserEdit?.id">
+                               
+                                <th scope="row">{{user.id}}</th>
+                                <td>
+                                    <div class="input-group mb-3" >
+                                        <input type="text" class="form-control" placeholder="name" aria-label="Username"  formControlName="name" aria-describedby="basic-addon1">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="input-group mb-3">
+                                        <input type="text" class="form-control" placeholder="Username" aria-label="Username" formControlName="username" aria-describedby="basic-addon1">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="input-group mb-3">
+                                        <input type="text" class="form-control" placeholder="email" aria-label="Username" formControlName="email" aria-describedby="basic-addon1">
+                                    </div>
+                                </td>
+                                <td class="align-middle"><button class="btn btn-primary btn-sm" type="button" (click)="saveUser(user)">Save</button></td>
+                            </ng-container>
+                            <ng-container *ngIf="user.id!=currentUserEdit?.id">
+                                <th scope="row">{{user.id}}</th>
+                                <td>{{user.name}}</td>
+                                <td>{{user.username}}</td>
+                                <td>{{user.email}}</td>
+                                <td class="edit-col align-middle"><button class="btn btn-secondary btn-sm" type="button" (click)="editUser(user)">Edit</button></td>
+                            </ng-container>
+                          
+                        </tr>
+                    </ng-container>
+                </tbody>
+            </table>
+        </div>
+       
     </form>
     <div class="row">
         <div class="alert alert-success" role="alert">
